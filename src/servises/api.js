@@ -1,6 +1,5 @@
 const BASE_URL = 'https://pixabay.com/api';
 const API_KEY = process.env.REACT_APP_API_KEY;
-console.log('🚀 ~ API_KEY', API_KEY);
 
 const fetchImages = (serchQuery, page) => {
   const url = `${BASE_URL}/?q=${serchQuery}&page=${page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=20
