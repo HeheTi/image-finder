@@ -1,0 +1,77 @@
+@import-normalize;
+
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.swiper * {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  border: 0;
+  height: 100%;
+  transform: none !important;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+html,
+body,
+ul,
+ol {
+  padding: 0;
+}
+
+html,
+body,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a {
+  text-decoration-skip-ink: auto;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+input,
+button,
+select,
+textarea,
+pre {
+  font: inherit;
+}
