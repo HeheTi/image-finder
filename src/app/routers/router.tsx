@@ -7,11 +7,11 @@ import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 const routers = [
   {
-    path: '/',
+    path: '',
     component: ImageSearchPage,
   },
   {
-    path: '/about',
+    path: 'about',
     component: AboutPage,
   },
   {
@@ -20,14 +20,16 @@ const routers = [
   },
 ];
 
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    Component: App,
-    children: routers.map(route => ({
-      path: route.path === '/' ? undefined : route.path,
-      index: route.path === '/',
-      Component: route.component,
-    })),
-  },
-]);
+export const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      Component: App,
+      children: routers.map(route => ({
+        ...route,
+        Component: route.component,
+      })),
+    },
+  ],
+  { basename: import.meta.env.BASE_URL.replace(/\/$/, '') }
+);
