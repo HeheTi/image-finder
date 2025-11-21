@@ -1,73 +1,136 @@
-# React + TypeScript + Vite
+# Image Finder (Vite + React 19 + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern rewrite of the legacy Image Finder project using **Vite**, **React 19**, and
+**TypeScript**.  
+The goal of this project is to demonstrate clean architecture, modular feature-based structure,
+reusable UI components, and predictable async data flows.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## React Compiler
+- [Image Finder (Vite + React 19 + TypeScript)](#image-finder-vite--react-19--typescript)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Tech Stack](#tech-stack)
+  - [Project Structure](#project-structure)
+  - [Environment Variables](#environment-variables)
+  - [GitHub Pages Deployment](#github-pages-deployment)
+  - [Available Commands](#available-commands)
+  - [About](#about)
+  - [License](#license)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Fast bundling with **Vite**
+- **React 19 + TypeScript**
+- Feature-based architecture (FSD-inspired)
+- Typed **Pixabay API client** with environment variables
+- Modern async state management inside custom hooks
+- Reusable UI components (`Button`, `Modal`, `Loader`)
+- CSS Modules + SCSS
+- Integration with **React Router v7**
+- Clean separation of:
+  - domain model
+  - API layer
+  - UI layer
+  - shared components
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Vite**
+- **React 19**
+- **TypeScript**
+- **React Router v7**
+- **React Toastify**
+- **Pixabay API**
+- **SCSS Modules**
+- Feature-Sliced inspired structure
+
+---
+
+## Project Structure
+
+```bash
+project-root/
+├── index.html
+├── vite.config.ts
+├── package.json
+├── tsconfig.json
+├── .gitignore
+├── .env.example
+└── src/
+    ├── app/                         # application shell, routing, providers
+    ├── pages/                       # routing-level page components
+    ├── features/                    # isolated feature modules with API + model + UI
+    │   └── image-search/
+    ├── shared/                      # reusable UI and utilities
+    └── assets/
+        └── (images, icons, etc.)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Environment Variables
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Create `.env` file:
+
+```bash
+VITE_PIXABAY_API_KEY=your_api_key_here
 ```
+
+The key is required for image requests.
+
+---
+
+## GitHub Pages Deployment
+
+Vite requires specifying a base path for GitHub Pages.
+
+In `vite.config.ts`:
+
+```ts
+export default defineConfig({
+  base: '/image-finder/', // <-- repository name
+  plugins: [react()],
+  resolve: { ... }
+});
+```
+
+Then build:
+
+```bash
+npm run build
+```
+
+Deploy manually or via GitHub Actions.
+
+---
+
+## Available Commands
+
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `npm install`     | Install dependencies             |
+| `npm run dev`     | Start local development          |
+| `npm run build`   | Build production bundle          |
+| `npm run preview` | Preview production build locally |
+
+---
+
+## About
+
+This project is a refactored version of an old CRA-based Image Finder, updated with modern tooling
+and architecture.  
+It serves as a training environment to improve engineering skills, architectural thinking, and
+production-ready React development.
+
+---
+
+## License
+
+MIT © 2025
